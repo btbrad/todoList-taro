@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { View, Button, Text } from '@tarojs/components'
 import { observer, inject } from 'mobx-react'
+import Taro from '@tarojs/taro'
 
 import './index.scss'
 
@@ -33,6 +34,12 @@ class Index extends Component {
     counterStore.incrementAsync()
   }
 
+  goTodo = () => {
+    Taro.navigateTo({
+      url: '/pages/todolist/index'
+    })
+  }
+
   render () {
     const { counterStore: { counter } } = this.props.store
     return (
@@ -41,6 +48,7 @@ class Index extends Component {
         <Button onClick={this.decrement}>-</Button>
         <Button onClick={this.incrementAsync}>Add Async</Button>
         <Text>{counter}</Text>
+        <Button type="primary" onClick={this.goTodo}>go todolist</Button>
       </View>
     )
   }
