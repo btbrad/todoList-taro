@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text } from '@tarojs/components'
+import { View, Text, Input } from '@tarojs/components'
 
 class TodoList extends Component {
 
@@ -17,15 +17,24 @@ class TodoList extends Component {
         id: 3,
         todo: 'hiking'
       }
-    ]
+    ],
+    newTodo: ''
+  }
+
+  handleChange = (e) => {
+    this.setState({
+      newTodo: e.target.value
+    })
   }
 
   render () {
 
-    const { list } = this.state
+    const { list, newTodo } = this.state
 
     return (
       <View>
+        <Text>New Todo</Text>
+        <Input type="text" placeholder="Please Enter" value={newTodo} onChange={this.handleChange}></Input>
         {
           list.map(({todo, id}) => (
             <View key={id}>{todo}</View>
