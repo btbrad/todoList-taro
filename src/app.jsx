@@ -2,11 +2,13 @@ import React, { Component } from 'react'
 import { Provider } from 'mobx-react'
 
 import counterStore from './store/counter'
+import todoStore from './store/todoList'
 
 import './app.scss'
 
 const store = {
-  counterStore
+  counterStore,
+  todoStore
 }
 
 class App extends Component {
