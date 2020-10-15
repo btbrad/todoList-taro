@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { View, Text, Input } from '@tarojs/components'
+import List from './components/List'
 
 class TodoList extends Component {
 
@@ -35,11 +36,7 @@ class TodoList extends Component {
       <View>
         <Text>New Todo</Text>
         <Input type="text" placeholder="Please Enter" value={newTodo} onChange={this.handleChange}></Input>
-        {
-          list.map(({todo, id}) => (
-            <View key={id}>{todo}</View>
-          ))
-        }
+        <List data={list} />
       </View>
     )
   }
