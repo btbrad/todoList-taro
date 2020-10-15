@@ -14,7 +14,7 @@ export default class List extends Component {
 
     return (
       <View>
-        { data.map(item => <ListItem todo={item.todo} key={item.id} /> )}
+        { data.map(item => <ListItem todo={item} key={item.id} /> )}
       </View>
     )
   }

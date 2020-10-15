@@ -8,18 +8,25 @@ class TodoList extends Component {
     list: [
       {
         id: 1,
-        todo: 'coding'
+        name: 'coding',
+        done: false
       },
       {
         id: 2,
-        todo: 'fishing'
+        name: 'fishing',
+        done: true
       },
       {
         id: 3,
-        todo: 'hiking'
+        name: 'hiking',
+        done: false
       }
     ],
     newTodo: ''
+  }
+
+  componentDidMount() {
+    console.log('组件挂载了')
   }
 
   handleChange = (e) => {

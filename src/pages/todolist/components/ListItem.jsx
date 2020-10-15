@@ -1,5 +1,5 @@
 import React, { Component } from 'react' 
-import { View } from '@tarojs/components'
+import { View, Checkbox } from '@tarojs/components'
 
 export default class List extends Component {
 
@@ -8,9 +8,11 @@ export default class List extends Component {
   }
 
   render() {
-    let { todo } = this.props
+    let { todo: {name, done} } = this.props
     return (
-      <View>{todo}</View>
+      <View>
+        <Checkbox checked={done}>{name}</Checkbox>
+      </View>
     )
   }
 }
