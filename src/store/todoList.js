@@ -22,7 +22,7 @@ const todoStore = observable({
     this.counter++
   },
   addTodo(todoObj) {
-    this.list.push(todoObj)
+    this.list = [...this.list, todoObj]
   },
   deleteTodo(id) {
     this.list = this.list.filter(item => item.id !== id)
