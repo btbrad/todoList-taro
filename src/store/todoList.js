@@ -33,6 +33,7 @@ const todoStore = observable({
         item.done = !item.done
       }
     })
+    console.log(this.list)
   },
   incrementAsync() {
     setTimeout(() => {

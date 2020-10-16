@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { View, Text, Input } from '@tarojs/components'
 import List from './components/List'
-import { inject, observer } from 'mobx-react';
+import { inject, observer } from 'mobx-react'
+import './index.scss'
 
 @inject('store')
 @observer
