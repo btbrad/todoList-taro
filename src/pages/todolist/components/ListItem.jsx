@@ -40,7 +40,7 @@ export default class List extends Component {
     return (
       <View className='list-item'>
         <CheckboxGroup onChange={() => this.handleChange(id)}>
-          <Checkbox checked={done}>{name}</Checkbox>
+          <Checkbox checked={done} className={done ? 'done' : '' }>{name}</Checkbox>
         </CheckboxGroup>
         <Button type="warn" size="mini" onClick={() => this.handleDelete(id)}>DELETE</Button>
       </View>

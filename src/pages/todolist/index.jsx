@@ -12,12 +12,7 @@ class TodoList extends Component {
     newTodo: ''
   }
 
-  componentDidMount() {
-    console.log('组件挂载了')
-  }
-
   handleChange = (e) => {
-    console.log(111, e.target.value)
     this.setState({
       newTodo: e.target.value
     })
@@ -26,8 +21,6 @@ class TodoList extends Component {
   handleAdd = () => {
     let { newTodo } = this.state
     const { todoStore } = this.props.store
-
-    console.log(2222)
 
     if (!newTodo.length) {
       wx.showToast({
@@ -43,6 +36,28 @@ class TodoList extends Component {
       name: newTodo,
       done: false
     })
+    this.setState({
+      newTodo: ''
+    })
+  }
+
+  deleteAllDone = () => {
+    const { todoStore } = this.props.store
+    wx.showModal({
+      title: '提示',
+      content: `确定删除所有已完成todo吗？`,
+      success (res) {
+        if (res.confirm) {
+          console.log('用户点击确定')
+          todoStore.list.forEach(item => {
+            item.done && todoStore.deleteTodo(item.id)
+          })
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
+    })
+    
   }
 
   render () {
@@ -63,6 +78,10 @@ class TodoList extends Component {
           <Button type="primary" size="mini" onClick={this.handleAdd}>添加</Button>
         </View>
         <List data={list} />
+        <View className='statistics'>
+          <View>统计：{ list.filter(item => item.done).length } / {list.length}</View>
+          <View className="del-all-done" onClick={this.deleteAllDone}>一键清除已完成</View>
+        </View>
       </View>
     )
   }

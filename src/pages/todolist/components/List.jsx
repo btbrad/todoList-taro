@@ -13,8 +13,8 @@ export default class List extends Component {
     let { data } = this.props
 
     return (
-      <View>
-        { data.map(item => <ListItem todo={item} key={item.id} /> )}
+      <View className="todo-list">
+        { data.length ? <View>{data.map(item => <ListItem todo={item} key={item.id} /> )}</View> : <View className='slogan'>全部完成！！！</View>}
       </View>
     )
   }
